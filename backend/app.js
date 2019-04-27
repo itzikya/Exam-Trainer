@@ -1,7 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-
+const multipart = require('connect-multiparty');  
+const multipartMiddleware = multipart({ uploadDir:'./uploads' });
 const Post = require("./models/post");
 
 const app = express();
@@ -18,7 +19,7 @@ mongoose
   });
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -34,16 +35,10 @@ app.use((req, res, next) => {
 });
 
 app.post("/api/posts", (req, res, next) => {
-  const post = new Post({
-    title: req.body.title,
-    content: req.body.content
-  });
-  post.save().then(createdPost => {
-    res.status(201).json({
-      message: "Post added successfully",
-      postId: createdPost._id
-    });
-  });
+  //const file = req.upload;
+  console.log("heganu lepo");
+  //console.log(file.title);
+  res.status(200).send("itzik 4");
 });
 
 app.get("/api/posts", (req, res, next) => {
