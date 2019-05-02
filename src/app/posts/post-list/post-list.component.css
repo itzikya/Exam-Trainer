@@ -19,3 +19,12 @@ mat-spinner {
   width: 100%;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
+
+.mat-expansion-panel-header {
+  font-size: 22px;
+  font-family: "atma";
+}
+
+p {
+  font-family: "atma";
+}
