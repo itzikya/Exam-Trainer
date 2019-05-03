@@ -12,17 +12,14 @@
         #title="ngModel">
       <mat-error *ngIf="title.invalid">Please enter a post title.</mat-error>
     </mat-form-field>
-    <mat-form-field>
-      <textarea
-        matInput
-        rows="4"
-        name="content"
-        ngModel
-        required
-        placeholder="Post Content"
-        #content="ngModel"></textarea>
-      <mat-error *ngIf="content.invalid">Please enter a post title.</mat-error>
-    </mat-form-field>
+    <input
+      type="file"
+      name="file"
+      placeholder="Upload file"
+      ngModel
+      required
+      accept=".pdf"
+      #title="ngModel">
     <button
       mat-raised-button
       color="accent"

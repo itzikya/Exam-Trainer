@@ -34,15 +34,30 @@ app.use((req, res, next) => {
 });
 
 app.post("/api/posts", (req, res, next) => {
+  var filePath = '/home/royp/exam-trainer/Exam-Trainer/backend/pdfs/helloWorld.pdf'
+  var extract = require('pdf-text-extract')
+  extract(filePath, { splitPages: false }, function (err, text) {
+    if (err) {
+      console.dir(err)
+      return
+    }
+    console.dir(text)
+  })
   const post = new Post({
     title: req.body.title,
-    content: req.body.content
-  });
+    file: req.body.file
+});
+  /*
   post.save().then(createdPost => {
     res.status(201).json({
       message: "Post added successfully",
       postId: createdPost._id
     });
+  });
+  */
+  res.status(201).json({
+    message: "Post added successfully",
+    postId: "1111"
   });
 });
 
